@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core"
+import { Component, OnChanges, OnDestroy, OnInit } from "@angular/core"
 import { Recipe } from "./recipe.model"
 import { RecipesService } from "./recipes.service"
 
@@ -13,6 +13,6 @@ export class RecipesPage implements OnInit {
     constructor(private recipesService: RecipesService) {}
 
     ngOnInit() {
-        this.recipes = this.recipesService.getRecipes()
+        this.recipesService.getRecipes().subscribe(recipes => (this.recipes = recipes))
     }
 }
